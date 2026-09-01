@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meteorologia — Indicadores 4.1 e 4.3</title>
+<style>
+  .viz-root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page-plano:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline:       #c3c2b7;
+    --border:         rgba(11,11,11,0.10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --page-plano:     #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --baseline:       #383835;
+      --border:         rgba(255,255,255,0.10);
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --page-plano:     #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border:         rgba(255,255,255,0.10);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-plano);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--text-primary);
+  }
+  .pagina { max-width: 920px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  .subtitulo { color: var(--text-secondary); margin: 0 0 28px; font-size: 0.95rem; }
+  .subtitulo-cartao { color: var(--text-secondary); margin: 0 0 18px; font-size: 0.85rem; }
+
+  .cartao {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+  }
+
+  .hero-label { color: var(--text-secondary); font-size: 0.85rem; margin: 0 0 6px; }
+  .hero-valor { font-size: 2.6rem; font-weight: 600; line-height: 1; }
+  .hero-valor small { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+  .hero-secundario { font-size: 0.8rem; color: var(--text-secondary); margin: 8px 0 0; }
+  .hero-secundario .valor-secundario { color: var(--text-muted); }
+
+  .linha-barra {
+    display: grid;
+    grid-template-columns: 90px 1fr 60px;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 0;
+  }
+  .rotulo-barra { font-size: 0.82rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .trilha-barra-simples { display: block; height: 14px; border-radius: 4px; background: var(--gridline); }
+  .barra-simples { display: block; height: 14px; border-radius: 4px; min-width: 2px; }
+  .valor-barra-simples { font-size: 0.82rem; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+
+  details.tabela-acessivel summary {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--gridline); }
+  th { color: var(--text-secondary); font-weight: 600; }
+
+  .nota { font-size: 0.78rem; color: var(--text-muted); margin-top: 10px; }
+</style>
+<style>
+  .nav-site {
+    display: flex;
+    gap: 4px;
+    padding: 14px 20px 0;
+    max-width: 920px;
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.85rem;
+  }
+  .nav-site a {
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #52514e;
+  }
+  .nav-site a:hover { background: #e1e0d9; }
+  .nav-site a[data-pagina="meteorologia"] {
+    background: #0b0b0b;
+    color: #fff;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<nav class="nav-site">
+  <a href="index.html" data-pagina="hidrometria">Hidrometria</a>
+  <a href="meteorologia.html" data-pagina="meteorologia">Meteorologia</a>
+</nav>
+
+<div class="viz-root">
+  <div class="pagina">
+    <h1>Meteorologia — Indicadores 4.1 e 4.3</h1>
+    <p class="subtitulo">Fonte: SIMGE (previsões do tempo e tendência climática), período 2026.</p>
+
+    <div class="cartao">
+      <h2>4.1 — Previsões do tempo publicadas</h2>
+      <p class="subtitulo-cartao">Denominador oficial: 7 previsões/semana (a de sexta-feira também cobre sábado e domingo).</p>
+      <p class="hero-label">Total de arquivos publicados no período</p>
+      <div class="hero-valor">167</div>
+      <p class="hero-secundario">total ponderado (sexta = 3, hipótese em confirmação): <span class="valor-secundario">229</span></p>
+      <div style="margin-top:18px;">
+        
+        <div class="linha-barra">
+          <span class="rotulo-barra">Segunda</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:94%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">33</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">Terça</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:97%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">34</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">Quarta</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:100%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">35</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">Quinta</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:97%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">34</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">Sexta</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:89%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">31</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">Sábado</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:2%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">0</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">Domingo</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:2%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">0</span>
+        </div>
+      </div>
+      <p class="nota">Sábado e domingo aparecem com 0 de propósito — confirma que não há publicação nesses dias.</p>
+    </div>
+
+    <div class="cartao">
+      <h2>4.3 — Monitoramento climático (tendência climática)</h2>
+      <p class="subtitulo-cartao">Só contam os boletins TENDENCIA_CLIMATICA_* — PROGNOSTICO_* (prognóstico sazonal) fica de fora, por decisão da coordenação.</p>
+      <p class="hero-label">Total de boletins no período</p>
+      <div class="hero-valor">5</div>
+      <div style="margin-top:18px;">
+        
+        <div class="linha-barra">
+          <span class="rotulo-barra">2026-05</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:100%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">2</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">2026-06</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:50%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">1</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">2026-07</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:50%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">1</span>
+        </div>
+        <div class="linha-barra">
+          <span class="rotulo-barra">2026-08</span>
+          <span class="trilha-barra-simples">
+            <span class="barra-simples" style="width:50%; background:#2a78d6;"></span>
+          </span>
+          <span class="valor-barra-simples">1</span>
+        </div>
+      </div>
+    </div>
+
+    <details class="tabela-acessivel" open>
+      <summary>Ver boletins de tendência climática (data e hora de criação)</summary>
+      <table>
+        <thead>
+          <tr><th>Criado em</th><th>Boletim</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>06/05/2026 09:02</td>
+          <td>TENDENCIA_CLIMATICA_MJJ_2026</td>
+        </tr>
+        <tr>
+          <td>29/05/2026 14:42</td>
+          <td>TENDENCIA_CLIMATICA_JJA_2026</td>
+        </tr>
+        <tr>
+          <td>18/06/2026 10:05</td>
+          <td>TENDENCIA_CLIMATICA_JAS_2026</td>
+        </tr>
+        <tr>
+          <td>14/07/2026 10:19</td>
+          <td>TENDENCIA_CLIMATICA_ASO_2026</td>
+        </tr>
+        <tr>
+          <td>20/08/2026 11:12</td>
+          <td>TENDENCIA_CLIMATICA_SON_2026</td>
+        </tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+</div>
+</body>
+</html>
