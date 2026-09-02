@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meteorologia — Indicadores 4.1 e 4.3</title>
+<title>Meteorologia — Indicadores 4.1, 4.2 e 4.3</title>
 <style>
   .viz-root {
     color-scheme: light;
@@ -88,6 +88,21 @@
 
   .relatorio-cd { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--gridline); }
 
+  .grid-duas-colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 640px) {
+    .grid-duas-colunas { grid-template-columns: 1fr; }
+  }
+  .grafico-barras-horizontal { display: flex; flex-direction: column; gap: 6px; }
+  .barra-horiz-item { display: flex; align-items: center; gap: 8px; }
+  .barra-horiz-rotulo { width: 52px; flex-shrink: 0; font-size: 0.72rem; color: var(--text-secondary); }
+  .barra-horiz-trilha { flex: 1; background: var(--gridline); border-radius: 3px; height: 12px; overflow: hidden; }
+  .barra-horiz-barra { display: block; height: 100%; border-radius: 3px; min-width: 2px; }
+  .barra-horiz-valor { width: 34px; flex-shrink: 0; text-align: right; font-size: 0.75rem; font-weight: 600; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+
   details.tabela-acessivel summary {
     cursor: pointer;
     color: var(--text-secondary);
@@ -132,7 +147,7 @@
 
 <div class="viz-root">
   <div class="pagina">
-    <h1>Meteorologia — Indicadores 4.1 e 4.3</h1>
+    <h1>Meteorologia — Indicadores 4.1, 4.2 e 4.3</h1>
     <p class="subtitulo">Fonte: SIMGE (previsões do tempo e tendência climática), período 2026.</p>
 
     <div class="cartao">
@@ -225,6 +240,207 @@
             <span class="barra-vert-valor">0</span>
             <span class="barra-vert-coluna" style="height:2%; background:#1c3f66;"></span>
             <span class="barra-vert-rotulo">Domingo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cartao">
+      <h2>4.2 — Monitoramento Meteorológico e envio de alertas realizado</h2>
+      
+      <div class="relatorio-cd">
+        <p class="hero-label">Pontuação (Cálculo de Desempenho) do período</p>
+        <div class="hero-valor">0 <small>/ 10</small></div>
+        <p class="hero-secundario">
+          34.69% de monitoramento
+          — <span class="valor-secundario">85 relatórios diários emitidos de 245 dias no período</span>
+        </p>
+      </div>
+      <div class="grid-duas-colunas">
+        <div>
+          <p class="hero-label">Total de relatórios diários publicados no período</p>
+          <div class="hero-valor">85</div>
+          <div style="margin-top:14px;">
+            
+        <div class="grafico-barras-horizontal">
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Jan/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:90%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">18</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Fev/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:85%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">17</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Mar/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:100%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">20</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Abr/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:40%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">8</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Mai/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:35%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">7</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Jun/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:40%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">8</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Jul/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:15%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">3</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Ago/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:15%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">3</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Set/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:5%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">1</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Out/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:2%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">0</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Nov/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:2%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">0</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Dez/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:2%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">0</span>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div>
+          <p class="hero-label">Total de alertas individuais publicados no período</p>
+          <div class="hero-valor">2083</div>
+          <div style="margin-top:14px;">
+            
+        <div class="grafico-barras-horizontal">
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Jan/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:89%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">530</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Fev/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:89%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">529</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Mar/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:100%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">594</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Abr/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:33%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">197</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Mai/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:13%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">77</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Jun/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:13%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">75</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Jul/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:8%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">45</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Ago/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:5%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">32</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Set/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:2%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">4</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Out/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:2%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">0</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Nov/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:2%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">0</span>
+          </div>
+          <div class="barra-horiz-item">
+            <span class="barra-horiz-rotulo">Dez/2026</span>
+            <span class="barra-horiz-trilha">
+              <span class="barra-horiz-barra" style="width:2%; background:#1c3f66;"></span>
+            </span>
+            <span class="barra-horiz-valor">0</span>
+          </div>
+        </div>
           </div>
         </div>
       </div>
