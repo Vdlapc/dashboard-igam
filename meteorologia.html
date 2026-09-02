@@ -68,17 +68,25 @@
   .hero-secundario { font-size: 0.8rem; color: var(--text-secondary); margin: 8px 0 0; }
   .hero-secundario .valor-secundario { color: var(--text-muted); }
 
-  .linha-barra {
-    display: grid;
-    grid-template-columns: 90px 1fr 60px;
-    align-items: center;
-    gap: 12px;
-    padding: 5px 0;
+  .grafico-barras-vertical {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    padding: 0 4px;
   }
-  .rotulo-barra { font-size: 0.82rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .trilha-barra-simples { display: block; height: 14px; border-radius: 4px; background: var(--gridline); }
-  .barra-simples { display: block; height: 14px; border-radius: 4px; min-width: 2px; }
-  .valor-barra-simples { font-size: 0.82rem; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+  .barra-vert-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    height: 100%;
+  }
+  .barra-vert-valor { font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+  .barra-vert-coluna { display: block; width: 60%; min-width: 18px; border-radius: 4px 4px 0 0; min-height: 2px; }
+  .barra-vert-rotulo { font-size: 0.75rem; color: var(--text-secondary); margin-top: 8px; text-align: center; }
+
+  .relatorio-cd { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--gridline); }
 
   details.tabela-acessivel summary {
     cursor: pointer;
@@ -129,99 +137,135 @@
 
     <div class="cartao">
       <h2>4.1 — Previsões do tempo publicadas</h2>
-      <p class="subtitulo-cartao">Denominador oficial: 7 previsões/semana (a de sexta-feira também cobre sábado e domingo).</p>
+      <p class="subtitulo-cartao">Previsão esperada por dia útil (segunda a sexta, descontando feriados/facultativos)</p>
+      
+      <div class="relatorio-cd">
+        <p class="hero-label">Pontuação (Cálculo de Desempenho) do período</p>
+        <div class="hero-valor">8 <small>/ 10</small></div>
+        <p class="hero-secundario">
+          99.41% de transmissão
+          — <span class="valor-secundario">168 previsões publicadas de 169 dias úteis esperados</span>
+        </p>
+        
+      <details class="tabela-acessivel">
+        <summary>Ver feriados/pontos facultativos descontados do período (6)</summary>
+        <table>
+          <thead><tr><th>Data</th><th>Tipo</th><th>Nome</th></tr></thead>
+          <tbody>
+        <tr>
+          <td>01/01/2026</td>
+          <td>Feriado</td>
+          <td>Confraternização Universal</td>
+        </tr>
+        <tr>
+          <td>17/02/2026</td>
+          <td>Facultativo</td>
+          <td>Carnaval</td>
+        </tr>
+        <tr>
+          <td>03/04/2026</td>
+          <td>Feriado</td>
+          <td>Sexta-feira Santa</td>
+        </tr>
+        <tr>
+          <td>21/04/2026</td>
+          <td>Feriado</td>
+          <td>Tiradentes e Data Magna de MG</td>
+        </tr>
+        <tr>
+          <td>01/05/2026</td>
+          <td>Feriado</td>
+          <td>Dia do Trabalho</td>
+        </tr>
+        <tr>
+          <td>04/06/2026</td>
+          <td>Facultativo</td>
+          <td>Corpus Christi</td>
+        </tr>
+          </tbody>
+        </table>
+      </details>
+      </div>
       <p class="hero-label">Total de arquivos publicados no período</p>
       <div class="hero-valor">168</div>
-      <p class="hero-secundario">total ponderado (sexta = 3, hipótese em confirmação): <span class="valor-secundario">230</span></p>
       <div style="margin-top:18px;">
         
-        <div class="linha-barra">
-          <span class="rotulo-barra">Segunda</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:92%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">33</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">Terça</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:94%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">34</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">Quarta</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:100%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">36</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">Quinta</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:94%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">34</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">Sexta</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:86%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">31</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">Sábado</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:2%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">0</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">Domingo</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:2%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">0</span>
+        <div class="grafico-barras-vertical" style="height:170px;">
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">33</span>
+            <span class="barra-vert-coluna" style="height:92%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Segunda</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">34</span>
+            <span class="barra-vert-coluna" style="height:94%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Terça</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">36</span>
+            <span class="barra-vert-coluna" style="height:100%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Quarta</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">34</span>
+            <span class="barra-vert-coluna" style="height:94%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Quinta</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">31</span>
+            <span class="barra-vert-coluna" style="height:86%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Sexta</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">0</span>
+            <span class="barra-vert-coluna" style="height:2%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Sábado</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">0</span>
+            <span class="barra-vert-coluna" style="height:2%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Domingo</span>
+          </div>
         </div>
       </div>
-      <p class="nota">Sábado e domingo aparecem com 0 de propósito — confirma que não há publicação nesses dias.</p>
     </div>
 
     <div class="cartao">
       <h2>4.3 — Monitoramento climático (tendência climática)</h2>
-      <p class="subtitulo-cartao">Só contam os boletins TENDENCIA_CLIMATICA_* — PROGNOSTICO_* (prognóstico sazonal) fica de fora, por decisão da coordenação.</p>
+      
+      <div class="relatorio-cd">
+        <p class="hero-label">Pontuação (Cálculo de Desempenho) do período</p>
+        <div class="hero-valor">0 <small>/ 10</small></div>
+        <p class="hero-secundario">
+          55.56% de publicação
+          — <span class="valor-secundario">5 boletins publicados de 9 meses esperados</span>
+        </p>
+      </div>
       <p class="hero-label">Total de boletins no período</p>
       <div class="hero-valor">5</div>
       <div style="margin-top:18px;">
         
-        <div class="linha-barra">
-          <span class="rotulo-barra">2026-05</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:100%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">2</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">2026-06</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:50%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">1</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">2026-07</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:50%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">1</span>
-        </div>
-        <div class="linha-barra">
-          <span class="rotulo-barra">2026-08</span>
-          <span class="trilha-barra-simples">
-            <span class="barra-simples" style="width:50%; background:#2a78d6;"></span>
-          </span>
-          <span class="valor-barra-simples">1</span>
+        <div class="grafico-barras-vertical" style="height:170px;">
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">2</span>
+            <span class="barra-vert-coluna" style="height:100%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Mai/2026</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">1</span>
+            <span class="barra-vert-coluna" style="height:50%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Jun/2026</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">1</span>
+            <span class="barra-vert-coluna" style="height:50%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Jul/2026</span>
+          </div>
+          <div class="barra-vert-item">
+            <span class="barra-vert-valor">1</span>
+            <span class="barra-vert-coluna" style="height:50%; background:#1c3f66;"></span>
+            <span class="barra-vert-rotulo">Ago/2026</span>
+          </div>
         </div>
       </div>
     </div>
